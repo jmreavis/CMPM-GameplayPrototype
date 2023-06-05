@@ -104,22 +104,22 @@ class AdventureScene extends Phaser.Scene {
         return this.inventory.includes(item);
     }
 
-    emphasizeItem(item) {//new engine method
-        this.tweens.add ({
-            targets: item,
-            scale: 5.5,
-            duration: 100,
-        });
-    }
+    // emphasizeItem(item) {//new engine method
+    //     this.tweens.add ({
+    //         targets: item,
+    //         scale: 5.5,
+    //         duration: 100,
+    //     });
+    // }
 
-    deEmphasizeItem(item)//emphasizeItem helper method
-    {
-        this.tweens.add ({
-            targets: item,
-            scale: 5,
-            duration: 100
-        });
-    }
+    // deEmphasizeItem(item)//emphasizeItem helper method
+    // {
+    //     this.tweens.add ({
+    //         targets: item,
+    //         scale: 5,
+    //         duration: 100
+    //     });
+    // }
 
     
 

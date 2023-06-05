@@ -250,6 +250,16 @@ class Exit extends AdventureScene {
     }
 }
 
+class CoreGameplay extends AdventureScene {
+    constructor() {
+        super("core", "Core gameplay demonstration");
+    }
+
+    onEnter() {
+        let message = this.add.text(100, 100, "now in core gameplay");
+    }
+}
+
 class Demo1 extends AdventureScene {
     constructor() {
         super("demo1", "First Room");
@@ -392,7 +402,8 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Intro, Cell, Secret, Main, Graveyard, Exit, Outro1, Outro2],
+    //scene: [Intro, Cell, Secret, Main, Graveyard, Exit, Outro1, Outro2],
+    scene: [CoreGameplay],
     title: "Entombed",
 });
 
