@@ -1,262 +1,283 @@
-class Cell extends AdventureScene {
-    constructor() {
-        super("cell", "Dingy Cell");
-    }
+// class Cell extends AdventureScene {
+//     constructor() {
+//         super("cell", "Dingy Cell");
+//     }
 
-    preload() {
-        this.load.image("cell", "./assets/prison_cell.png");
-    }
+//     preload() {
+//         this.load.image("cell", "./assets/prison_cell.png");
+//     }
 
-    onEnter() {
-        let background = this.add.sprite(715, 540,  "cell");
-        background.setScale(1.155);
+//     onEnter() {
+//         let background = this.add.sprite(715, 540,  "cell");
+//         background.setScale(1.155);
 
-        let wallHitbox = this.add.text(625, 150, " ")
-            .setScale(20)
-            .setInteractive()
-            .on('pointerover', () => {
-                if(this.hasItem('bricks')) {
-                    this.showMessage("A couple blows from these bricks should bring the rest of it down")
-                } else if(this.hasItem('key')) {
-                    this.showMessage("The wall is down. I already got what I needed")
-                } else {
-                    this.showMessage("The wall is beginning to crumble...")
-                }
-            })
-            .on('pointerdown', () => {
-                if(this.hasItem('bricks')) {
-                    this.showMessage("*CRASH*")
-                    this.loseItem('bricks')
-                    this.spriteRemove(brick)
-                    this.gotoScene("secret")
-                } else {
-                    this.showMessage("I can't bust through this with just my bare hands...")
-                }
-            });
+//         let wallHitbox = this.add.text(625, 150, " ")
+//             .setScale(20)
+//             .setInteractive()
+//             .on('pointerover', () => {
+//                 if(this.hasItem('bricks')) {
+//                     this.showMessage("A couple blows from these bricks should bring the rest of it down")
+//                 } else if(this.hasItem('key')) {
+//                     this.showMessage("The wall is down. I already got what I needed")
+//                 } else {
+//                     this.showMessage("The wall is beginning to crumble...")
+//                 }
+//             })
+//             .on('pointerdown', () => {
+//                 if(this.hasItem('bricks')) {
+//                     this.showMessage("*CRASH*")
+//                     this.loseItem('bricks')
+//                     this.spriteRemove(brick)
+//                     this.gotoScene("secret")
+//                 } else {
+//                     this.showMessage("I can't bust through this with just my bare hands...")
+//                 }
+//             });
             
 
-        let doorHitBox = this.add.text(100, 200, " ")
-            .setScale(5)
-            .setInteractive()
-            .on('pointerover', () => {
-                if(this.hasItem("key")) {
-                    this.showMessage("I should be able to unlock this door now")
-                } else {
-                    this.showMessage("Locked tight. I need to find a way out, and fast.")
-                }
-            })
-            .on('pointerdown', () => {
-                if(this.hasItem("key")) {
-                    this.showMessage("*creak*")
-                    this.loseItem("key")
-                    this.gotoScene("main")
-                } else {
-                    this.showMessage("It's locked")
-                }
-            });
+//         let doorHitBox = this.add.text(100, 200, " ")
+//             .setScale(5)
+//             .setInteractive()
+//             .on('pointerover', () => {
+//                 if(this.hasItem("key")) {
+//                     this.showMessage("I should be able to unlock this door now")
+//                 } else {
+//                     this.showMessage("Locked tight. I need to find a way out, and fast.")
+//                 }
+//             })
+//             .on('pointerdown', () => {
+//                 if(this.hasItem("key")) {
+//                     this.showMessage("*creak*")
+//                     this.loseItem("key")
+//                     this.gotoScene("main")
+//                 } else {
+//                     this.showMessage("It's locked")
+//                 }
+//             });
 
-        let brick = this.add.text(1200, 1000, "🧱")
-            .setScale(5)
-            .setInteractive()
-            .on('pointerover', () => this.emphasizeItem(brick))
-            .on('pointerover', () => this.showMessage("There's a brick on the ground next to this bucket. Could be useful."))
-            .on('pointerout', () => this.deEmphasizeItem(brick))
-            .on('pointerdown', () => {
-                this.showMessage("Bricks collected")
-                this.gainItem('bricks')
-                this.spriteRemove(brick)
-            });
+//         let brick = this.add.text(1200, 1000, "🧱")
+//             .setScale(5)
+//             .setInteractive()
+//             .on('pointerover', () => this.emphasizeItem(brick))
+//             .on('pointerover', () => this.showMessage("There's a brick on the ground next to this bucket. Could be useful."))
+//             .on('pointerout', () => this.deEmphasizeItem(brick))
+//             .on('pointerdown', () => {
+//                 this.showMessage("Bricks collected")
+//                 this.gainItem('bricks')
+//                 this.spriteRemove(brick)
+//             });
 
-            if(this.hasItem('key')) {
-                brick.destroy()
-            }
+//             if(this.hasItem('key')) {
+//                 brick.destroy()
+//             }
     
             
-}
-}
+// }
+// }
 
-class Secret extends AdventureScene {
-    constructor() {
-        super("secret", "Secret Chamber")
-    }
+// class Secret extends AdventureScene {
+//     constructor() {
+//         super("secret", "Secret Chamber")
+//     }
 
-    preload() {
-        this.load.image("secret", "./assets/secret_room.jpg");
-    }
+//     preload() {
+//         this.load.image("secret", "./assets/secret_room.jpg");
+//     }
 
-    onEnter() {
-        let background = this.add.sprite(715, 540,  "secret")
-        background.setScale(1.8)
+//     onEnter() {
+//         let background = this.add.sprite(715, 540,  "secret")
+//         background.setScale(1.8)
 
-        let spider = this.add.text(340, 560, " ")
-            .setInteractive()
-            .setFontSize(60)
-            .on('pointerover', () => this.showMessage("Gross. I hate spiders..."))
+//         let spider = this.add.text(340, 560, " ")
+//             .setInteractive()
+//             .setFontSize(60)
+//             .on('pointerover', () => this.showMessage("Gross. I hate spiders..."))
 
-        let key = this.add.text(1000, 725, "🔑")
-            .setScale(2)
-            .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage("A key! Maybe it fits the lock to the cell in the other room...")
-                this.emphasizeItem(key)
-            })
-            .on('pointerout', () => this.deEmphasizeItem(key))
-            .on('pointerdown', () => {
-                this.gainItem("key")
-                this.showMessage("Key collected")
-                this.spriteRemove(key)
-                this.gotoScene("cell")
-            });
-    }
-}
+//         let key = this.add.text(1000, 725, "🔑")
+//             .setScale(2)
+//             .setInteractive()
+//             .on('pointerover', () => {
+//                 this.showMessage("A key! Maybe it fits the lock to the cell in the other room...")
+//                 this.emphasizeItem(key)
+//             })
+//             .on('pointerout', () => this.deEmphasizeItem(key))
+//             .on('pointerdown', () => {
+//                 this.gainItem("key")
+//                 this.showMessage("Key collected")
+//                 this.spriteRemove(key)
+//                 this.gotoScene("cell")
+//             });
+//     }
+// }
 
-class Main extends AdventureScene {
-    constructor() {
-        super("main", "Main Chamber")
-    }
+// class Main extends AdventureScene {
+//     constructor() {
+//         super("main", "Main Chamber")
+//     }
 
-    preload() {
-        this.load.image("main", "./assets/main_chamber.png")
-    }
+//     preload() {
+//         this.load.image("main", "./assets/main_chamber.png")
+//     }
 
-    onEnter() {
-        let background = this.add.sprite(715, 540,  "main")
-            .setScale(1.8)
+//     onEnter() {
+//         let background = this.add.sprite(715, 540,  "main")
+//             .setScale(1.8)
         
-        let painting = this.add.text(450, 600, " ")
-            .setInteractive()
-            .setFontSize(200)
-            .on('pointerover', () => this.showMessage("An old painting, covered in dust. Whoever used to live here must have loved nature"))
-            .on('pointerdown', () => {
-            this.showMessage("Something fell out of the painting...!")
-            this.gainItem("coin")  
-            })
+//         let painting = this.add.text(450, 600, " ")
+//             .setInteractive()
+//             .setFontSize(200)
+//             .on('pointerover', () => this.showMessage("An old painting, covered in dust. Whoever used to live here must have loved nature"))
+//             .on('pointerdown', () => {
+//             this.showMessage("Something fell out of the painting...!")
+//             this.gainItem("coin")  
+//             })
         
-        let rocks = this.add.text(180, 780, " ")
-            .setFontSize(380)
-            .setInteractive()
-            .on('pointerover', () => this.showMessage("Those boulders are blocking my path. Guess that leaves two other directions..."))
-            .on('pointerdown', () => {
-                if(this.hasItem("pick")) {
-                    this.showMessage("That was a hefty swing... barely even made a dent")
-                } else {
-                    this.showMessage("There's no way I'm brute forcing my way through")
-                }
-            })
+//         let rocks = this.add.text(180, 780, " ")
+//             .setFontSize(380)
+//             .setInteractive()
+//             .on('pointerover', () => this.showMessage("Those boulders are blocking my path. Guess that leaves two other directions..."))
+//             .on('pointerdown', () => {
+//                 if(this.hasItem("pick")) {
+//                     this.showMessage("That was a hefty swing... barely even made a dent")
+//                 } else {
+//                     this.showMessage("There's no way I'm brute forcing my way through")
+//                 }
+//             })
 
-        let north = this.add.text(710, 780, " ")
-            .setInteractive()
-            .setFontSize(50)
-            .on('pointerover', () => this.showMessage("Go straight..."))
-            .on('pointerdown', () => this.gotoScene("grave"))
+//         let north = this.add.text(710, 780, " ")
+//             .setInteractive()
+//             .setFontSize(50)
+//             .on('pointerover', () => this.showMessage("Go straight..."))
+//             .on('pointerdown', () => this.gotoScene("grave"))
         
-        let east = this.add.text(1200, 800, " ")
-            .setFontSize(50)
-            .setInteractive()
-            .on('pointerover', () => this.showMessage("Go right..."))
-            .on("pointerdown", () => this.gotoScene("exit"))
-    }
-}
+//         let east = this.add.text(1200, 800, " ")
+//             .setFontSize(50)
+//             .setInteractive()
+//             .on('pointerover', () => this.showMessage("Go right..."))
+//             .on("pointerdown", () => this.gotoScene("exit"))
+//     }
+// }
 
-class Graveyard extends AdventureScene {
-    constructor() {
-        super("grave", "Graveyard")
-    }
+// class Graveyard extends AdventureScene {
+//     constructor() {
+//         super("grave", "Graveyard")
+//     }
 
-    preload() {
-        this.load.image("graveyard", "./assets/graveyard.jpg")
-    }
+//     preload() {
+//         this.load.image("graveyard", "./assets/graveyard.jpg")
+//     }
 
-    onEnter() {
-        let background = this.add.sprite(711, 540, "graveyard")
-            .setScale(2.7)
+//     onEnter() {
+//         let background = this.add.sprite(711, 540, "graveyard")
+//             .setScale(2.7)
 
-        let gravetext = this.add.text(815, 600, " ")
-            .setInteractive()
-            .setScale(9)
-            .on('pointerover', () => this.showMessage("Here lies Guppy, mans' best friend. 1921-1933"))
+//         let gravetext = this.add.text(815, 600, " ")
+//             .setInteractive()
+//             .setScale(9)
+//             .on('pointerover', () => this.showMessage("Here lies Guppy, mans' best friend. 1921-1933"))
 
-        let back = this.add.text(50, 350, "Return")
-            .setScale(3)
-            .setInteractive()
-            .on('pointerover', () => this.showMessage("Click to return to previous scene"))
-            .on('pointerdown', () => this.gotoScene("main"))
+//         let back = this.add.text(50, 350, "Return")
+//             .setScale(3)
+//             .setInteractive()
+//             .on('pointerover', () => this.showMessage("Click to return to previous scene"))
+//             .on('pointerdown', () => this.gotoScene("main"))
 
-        let digtext = this.add.text(860, 850, " ")
-            .setInteractive()
-            .setScale(9)
-            .on('pointerover', () => {
-                if(this.hasItem("pick")) {
-                    this.showMessage("It looks like something's jutting out of the ground. That pick I found earlier could do the trick")
-                } else {
-                    this.showMessage("It looks like something's jutting out of the ground. If only I could reach it somehow...")
-                }
-            })
-            .on('pointerdown', () => {
-                if(this.hasItem("pick")) {
-                    this.gainItem("bone")
-                    this.showMessage("This...doesn't look like any dog bone I've ever seen before")
-                } else {
-                    this.showMessage("The dirt is too solid to dig through bare-handed")
-                }
-            })
+//         let digtext = this.add.text(860, 850, " ")
+//             .setInteractive()
+//             .setScale(9)
+//             .on('pointerover', () => {
+//                 if(this.hasItem("pick")) {
+//                     this.showMessage("It looks like something's jutting out of the ground. That pick I found earlier could do the trick")
+//                 } else {
+//                     this.showMessage("It looks like something's jutting out of the ground. If only I could reach it somehow...")
+//                 }
+//             })
+//             .on('pointerdown', () => {
+//                 if(this.hasItem("pick")) {
+//                     this.gainItem("bone")
+//                     this.showMessage("This...doesn't look like any dog bone I've ever seen before")
+//                 } else {
+//                     this.showMessage("The dirt is too solid to dig through bare-handed")
+//                 }
+//             })
 
-        let pick = this.add.text(100, 700, "⛏️")
-            .setScale(3)
-            .setInteractive()
-            .on('pointerover', () => {
-                this.emphasizeItem(pick)
-                this.showMessage("A pickaxe. Could come in handy")
-            })
-            .on('pointerout', () => this.deEmphasizeItem(pick))
-            .on('pointerdown', () => {
-                this.gainItem("pick")
-                this.spriteRemove(pick)
-                this.showMessage("Can't hurt to take along, just in case")
-            })
-    }
-}
+//         let pick = this.add.text(100, 700, "⛏️")
+//             .setScale(3)
+//             .setInteractive()
+//             .on('pointerover', () => {
+//                 this.emphasizeItem(pick)
+//                 this.showMessage("A pickaxe. Could come in handy")
+//             })
+//             .on('pointerout', () => this.deEmphasizeItem(pick))
+//             .on('pointerdown', () => {
+//                 this.gainItem("pick")
+//                 this.spriteRemove(pick)
+//                 this.showMessage("Can't hurt to take along, just in case")
+//             })
+//     }
+// }
 
-class Exit extends AdventureScene {
-    constructor() {
-        super("exit", "Castle Exterior")
-    }
+// class Exit extends AdventureScene {
+//     constructor() {
+//         super("exit", "Castle Exterior")
+//     }
 
-    preload() {
-        this.load.image("exterior", "./assets/castle_outside.png")
-    }
+//     preload() {
+//         this.load.image("exterior", "./assets/castle_outside.png")
+//     }
 
-    onEnter() {
-        let background = this.add.sprite(480, 500, "exterior")
+//     onEnter() {
+//         let background = this.add.sprite(480, 500, "exterior")
 
-        let monsterhb = this.add.text(375, 40, " ")
-            .setScale(25)
-            .setInteractive()
-            .on('pointerover', () =>  {
-                if(this.hasItem("bone")) {
-                    this.showMessage("What the hell is that thing? That bone! It might not hurt it, but it will at least give me a chance to escape!")
-                } else {
-                    this.showMessage("There's nothing I can do...")
-                }
-            })
-            .on('pointerdown', () => {
-                if(this.hasItem("bone")) {
-                    this.showMessage("*chuck*  RRRAAAAAAHHH")
-                    this.gotoScene("outro1")
-                } else {
-                    this.gotoScene("outro2")
-                }
-            })
-    }
-}
+//         let monsterhb = this.add.text(375, 40, " ")
+//             .setScale(25)
+//             .setInteractive()
+//             .on('pointerover', () =>  {
+//                 if(this.hasItem("bone")) {
+//                     this.showMessage("What the hell is that thing? That bone! It might not hurt it, but it will at least give me a chance to escape!")
+//                 } else {
+//                     this.showMessage("There's nothing I can do...")
+//                 }
+//             })
+//             .on('pointerdown', () => {
+//                 if(this.hasItem("bone")) {
+//                     this.showMessage("*chuck*  RRRAAAAAAHHH")
+//                     this.gotoScene("outro1")
+//                 } else {
+//                     this.gotoScene("outro2")
+//                 }
+//             })
+//     }
+// }
 
 class CoreGameplay extends AdventureScene {
     constructor() {
         super("core", "Core gameplay demonstration");
     }
 
+    preload() {
+        this.load.image('bg', 'cyberpunk.jpg');
+    }
+
     onEnter() {
-        let message = this.add.text(100, 100, "now in core gameplay");
+        let message = this.add.text(300, 100, "now in core gameplay", {fontSize: 60});
+        message.setDepth(1);
+
+        this.tweens.add({
+            targets: message,
+            y: {from: 1000, to: 100},
+            duration: 4000
+        });
+
+        let background = this.add.sprite(720, 500, 'bg');
+        background.setScale(2.25)
+        background.scaleY = 3.25;
+
+
+        this.input.on('pointerdown', () => {
+            this.cameras.main.fade(1000, 0,0,0);
+            this.time.delayedCall(1000, () => this.scene.start('intro'));
+        });
     }
 }
 
@@ -361,14 +382,24 @@ class Intro extends Phaser.Scene {
     constructor() {
         super('intro')
     }
+
+    preload() {
+        this.load.audio('bgm', 'assets/technoBGM.mp3');
+        this.load.audio('start', 'assets/gong.mp3');
+    }
+
+    
     create() {
-        this.add.text(50,50, "Where am I...?").setFontSize(25);
-        this.add.text(50,100, "Fine dust fills the air as I stir, like a crypt being disturbed").setFontSize(20);
-        this.add.text(750,300, "Entombed").setFontSize(60);
-        this.add.text(800, 375, "Click to Begin").setFontSize(20);
+        let music = this.sound.add('bgm', {loop: true});
+        music.play();
+
+        let start = this.sound.add('start', {loop: false});
+
+        this.add.text(500,500, "Pretend this is a cool title screen for our game").setFontSize(25);
         this.input.on('pointerdown', () => {
+            start.play();
             this.cameras.main.fade(1000, 0,0,0);
-            this.time.delayedCall(1000, () => this.scene.start('cell'));
+            this.time.delayedCall(1000, () => this.scene.start('core'));
         });
     }
 }
@@ -404,6 +435,6 @@ const game = new Phaser.Game({
     },
     //scene: [Intro, Cell, Secret, Main, Graveyard, Exit, Outro1, Outro2],
     scene: [CoreGameplay],
-    title: "Entombed",
+    title: "Core Gameplay",
 });
 
