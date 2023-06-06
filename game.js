@@ -434,7 +434,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     //scene: [Intro, Cell, Secret, Main, Graveyard, Exit, Outro1, Outro2],
-    scene: [CoreGameplay],
+    scene: [Intro, CoreGameplay],
     title: "Core Gameplay",
 });
 
